@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  pool: 5
+
+development:
+  <<: *default
+  database: genre_box-development
+  username: postgres
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+
+test:
+  <<: *default
+  database: genre_box-test
+  username: postgres
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+
+production:
+  database: genre_box-produntion
+  username: postgres
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+
