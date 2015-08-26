@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  record_id: MyString
+  title: MyString
+  artist: MyString
+  abstract: MyString
+  release_date: MyString
+  publisher: MyString
+  track_list: MyString
+  legacy_genres: MyString
+
+two:
+  record_id: MyString
+  title: MyString
+  artist: MyString
+  abstract: MyString
+  release_date: MyString
+  publisher: MyString
+  track_list: MyString
+  legacy_genres: MyString

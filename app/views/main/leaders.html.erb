@@ -1,3 +1,6 @@
 <% @users.each do |u| %>
-	<%= u.name %>
+	<img src="<%= u.avatar %>" style="max-width: 60px; min-width: 60px; float: left;"> <%= u.name %>
+	<br>
+	Score: <%= u.score %>
+	<div style="clear:both"></div>
 <% end %>

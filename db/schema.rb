@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824202803) do
+ActiveRecord::Schema.define(version: 20150826210902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "films", force: true do |t|
+    t.string   "record_id"
+    t.text     "title"
+    t.text     "artist"
+    t.text     "abstract"
+    t.string   "release_date"
+    t.text     "publisher"
+    t.text     "track_list"
+    t.text     "legacy_genres"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "new_genres"
+    t.integer  "updated_by"
+    t.boolean  "not_found",     default: false
+    t.boolean  "found",         default: false
+    t.boolean  "need_to_send",  default: false
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

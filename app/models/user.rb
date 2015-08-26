@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
         	user = User.create(name: data["name"],
           	email: data["email"],
           	password: Devise.friendly_token[0,20],
-          	email: data["email"],
           	avatar: data["image"],
         	)
         end

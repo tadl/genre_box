@@ -7,4 +7,24 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def shared_variables
+  	@genre_list = ["Educational TV",
+  					"Action / Adventure",
+  					"Animation",
+  					"Comdedy",
+  					"Crime / Mystery",
+  					"Documentary",
+  					"Drama",
+  					"Family",
+  					"Fantasy",
+  					"Foriegn",
+  					"Horror",
+  					"Music",
+  					"Romance",
+  					"Science Fiction",
+  					"TV",
+  					"Thriller",
+  					"Western"]
+  end
+
 end

@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   root 'main#index'
   get 'main/index'
-
   get 'main/about'
-
   get 'main/leaders'
-
+  get 'main/found'
+  match "main/update_genre" => "main#update_genre", via: [:post], defaults: { format: 'json' }
  # devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
  # as :user do
  #    get 'sign_in', :to => "main#index", :as => :new_user_session
@@ -16,7 +15,7 @@ Rails.application.routes.draw do
     get 'sign_in', :to => "main#index", :as => :new_user_session
     get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
-
+  match '/:action', :controller => 'main', via: [:get, :post]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

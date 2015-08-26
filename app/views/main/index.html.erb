@@ -1,5 +1,42 @@
-<% if !current_user %>
-	<%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
-<% else %>
-	<%= current_user.name %> - <%= link_to "log out", destroy_user_session_path %>
+<%= will_paginate @films %>
+<br>
+<% @films.each do |f| %>
+	<div class="film_card" id="record_<%= f.record_id %>">
+	<img src="http://catalog.tadl.org/opac/extras/ac/jacket/medium/r/<%= f.record_id %>" class="film_cover">
+	<b>Title:</b> <%= f.title %>
+	<%if f.artist %>
+		<br>
+		<b>Author:</b> <%= f.artist %>
+	<% end %>
+	<% if f.abstract %>
+		<br>
+	 	<b>Summary:</b> <%= f.abstract %>
+	<% end %>
+	<% if f.track_list %>
+		<br>
+		<b>Track List:</b> <%= f.track_list %>
+	<% end %>
+	<% if f.release_date || f.publisher %>
+		<br>
+		<b>Release Date and Publisher:</b> <%= f.release_date %>, 	<%= f.publisher %>
+	<% end %>
+	<% if f.legacy_genres %>
+		<br>
+		<b>Legacy Genres:</b> <%= f.legacy_genres %>
+	<% end %>
+	<br>
+	<a href="http://www.allmovie.com/search/all/<%= f.title %>" target="blank"> Search AllMovies</a>
+	<br>
+	<p> Assign New Genres: </p>
+	<% @genre_list.sort.in_groups_of(6, false) do |group| %>
+		<% group.each do |g| %>
+			<label style="padding: 5px;"><input type="checkbox" value="<%=  CGI::escape(g) %>" /><%= g %></label>
+		<% end %>
+		<br>
+	<% end %>
+	<button onclick="update_genre('<%= f.record_id %>', '<%= current_user.id %>')">Save</button> 
+	<button>Mark Not Found / Unsure</button> 
+	</div>
+	<div style="clear: both"></div>
 <% end %>
+<%= will_paginate @films %>
