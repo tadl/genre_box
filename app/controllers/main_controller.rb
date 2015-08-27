@@ -11,6 +11,10 @@ class MainController < ApplicationController
   	@films = Film.where(:found => true, :not_found => false).paginate(:page => params[:page], :per_page => 8)
   end
 
+  def not_found
+  	@films = Film.where(:not_found => true).paginate(:page => params[:page], :per_page => 8)
+  end
+
   def about
   end
 
@@ -39,14 +43,53 @@ class MainController < ApplicationController
   		@message = "success"
   		@genres = new_genres
   		f = Film.find_by_record_id(traget_record)
-  		f.found = true
-  		f.updated_by = current_user.id
   		f.new_genres = new_genres
+  		if !new_genres.blank?
+  			f.updated_by = current_user.id
+  			f.found = true
+  			f.need_to_send = true
+  			f.not_found = false
+  		else
+  			f.updated_by = nil
+  			f.found = false
+  			f.need_to_send = false
+  		end
   		f.save
   		@title = f.title
   	end
   	respond_to do |format|
       format.json {render :json =>{:message => @message, :title => @title, :genres => @genres}}
+    end
+  end
+
+  def mark_not_found
+ 	f = Film.find_by_record_id(params[:record_id])
+ 	f.found = false
+ 	f.need_to_send = false
+ 	f.not_found = true
+ 	f.updated_by = nil
+ 	f.new_genres = ''
+ 	f.save
+ 	respond_to do |format|
+        format.js  {render :js => "Turbolinks.visit(document.URl)" }
+    end
+  end
+
+  def edit
+  	@film = Film.find_by_record_id(params[:record_id])
+  	@record_id = params[:record_id]
+  	@selected_genres = @film.new_genres.split(',')
+  	@target_div = '#edit_or_not_' + params[:record_id]
+  	respond_to do |format|
+      format.js 
+    end
+  end
+
+  def cancel_edit
+  	@film = Film.find_by_record_id(params[:record_id])
+  	@target_div = '#edit_or_not_' + params[:record_id]
+  	respond_to do |format|
+      format.js 
     end
   end 
 

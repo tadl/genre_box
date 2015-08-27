@@ -5,16 +5,20 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<% if !current_user %>
-	<%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
-<% else %>
-	<a href="index">Queue</a> <a href="found">Found</a>  <a href="not_found">Not Found</a>  <%= current_user.name %> - <%= link_to "log out", destroy_user_session_path %>
-	<br>
-<% end %>
+<div id="top_bar">
+	<% if !current_user %>
+		<%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
+	<% else %>
+		<a href="index">Queue</a> <a href="found">Found</a>  <a href="not_found">Not Found</a>  <%= current_user.name %> (Score: <%= my_score() %>) - <%= link_to "log out", destroy_user_session_path %>
+	<% end %>
+</div>
 <% if current_user %>
-	<%= yield %>
+	<div id="content">
+		<%= yield %>
+	</div>
 <% end %>
 
 </body>

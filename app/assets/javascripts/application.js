@@ -30,7 +30,7 @@ function update_genre(record_id){
     	type: 'POST',
     	success: function(data) {
     		if(data.message == 'success'){
-    			alert('worked')
+    			Turbolinks.visit(document.URl)
     		}else{
     			alert(data.message)
     		}

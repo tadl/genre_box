@@ -1,0 +1,33 @@
+<div class="film_card" id="record_<%= f.record_id %>">
+	<img src="http://catalog.tadl.org/opac/extras/ac/jacket/medium/r/<%= f.record_id %>" class="film_cover">
+	<b>Title:</b> <%= f.title %>
+	<%if f.artist %>
+		<br>
+		<b>Author:</b> <%= f.artist %>
+	<% end %>
+	<% if f.abstract %>
+		<br>
+	 	<b>Summary:</b> <%= f.abstract %>
+	<% end %>
+	<% if f.track_list %>
+		<br>
+		<b>Track List:</b> <%= f.track_list %>
+	<% end %>
+	<% if f.release_date || f.publisher %>
+		<br>
+		<b>Release Date and Publisher:</b> <%= f.release_date %>, 	<%= f.publisher %>
+	<% end %>
+	<% if f.legacy_genres %>
+		<br>
+		<b>Legacy Genres:</b> <%= f.legacy_genres %>
+	<% end %>
+	<br>
+	<div id="edit_or_not_<%= f.record_id %>">
+		<% if f.found != true %> 
+			<%= render 'update_genres', f: f %>
+		<% else %>
+			<%= render 'existing_genres', f: f %>
+		<% end %>
+	</div>
+</div>
+<div style="clear: both"></div>

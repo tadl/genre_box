@@ -1,4 +1,4 @@
-<h2>Queue (<%= @films.count %>)</h2>
+<h2>Not Found (<%= @films.count %>)</h2>
 <%= will_paginate @films %>
 <% @films.each do |f| %>
 	<%= render 'film_card', f: f %>

@@ -1,0 +1,4 @@
+$('<%= escape_javascript(@target_div)%>').html('<%= escape_javascript(render partial: "update_genres", :locals => {:f => @film}) %>');
+<% @selected_genres.each do |g| %>
+	$("<%= escape_javascript(@target_div)%> input[value=<%= escape_javascript(CGI::escape(g))%>").prop('checked',true);
+<% end %>

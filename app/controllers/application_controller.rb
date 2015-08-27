@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   	@genre_list = ["Educational TV",
   					"Action / Adventure",
   					"Animation",
-  					"Comdedy",
+  					"Comedy",
   					"Crime / Mystery",
   					"Documentary",
   					"Drama",

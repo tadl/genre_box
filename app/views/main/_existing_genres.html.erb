@@ -1,0 +1,6 @@
+<b>Updated Genres:</b> <%= f.new_genres %>
+<br>
+<b>Last Updated By:</b> <%= found_by(f.updated_by) %>
+<br>
+<% edit_this = 'edit?record_id=' + f.record_id %>
+<%= button_to "Edit", edit_this  ,remote: true %>

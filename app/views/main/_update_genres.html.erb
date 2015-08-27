@@ -1,0 +1,17 @@
+<a href="http://www.allmovie.com/search/all/<%= f.title %>" target="blank"> Search AllMovies</a>
+<p> Assign New Genres: </p>
+<% @genre_list.sort.in_groups_of(6, false) do |group| %>
+	<% group.each do |g| %>
+		<label style="padding: 5px;"><input type="checkbox" value="<%=  CGI::escape(g) %>" /><%= g %></label>
+	<% end %>
+	<br>
+<% end %>
+<button onclick="update_genre('<%= f.record_id %>')">Save</button> 
+<% if f.found == true %>
+	<% cancel_edit_this = 'cancel_edit?record_id=' + f.record_id %>
+	<%= button_to "Cancel", cancel_edit_this, remote: true %>
+<% end %>
+<% if f.not_found == false %>
+	<% mark_this_not_found = 'mark_not_found?record_id=' + f.record_id %>
+	<%= button_to "Not Found", mark_this_not_found, remote: true %>
+<% end %>

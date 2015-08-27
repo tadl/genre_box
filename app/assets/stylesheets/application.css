@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+
+body{
+	background-color: #e3f2fd;
+	font-family: 'Open Sans', sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+#top_bar{
+	position: fixed;
+	top: 0px;
+	height: 35px;
+	width: 100%;
+	background-color: #0d47a1;
+	color: #fff;
+	z-index: 100;
+}
+
+#content{
+	position: absolute;
+	top: 40px;
+}
+
+#top_bar a {
+	color: #fff;
+	padding: 10px;
+}
+
+#top_bar a:visited {
+	color: #fff;
+}

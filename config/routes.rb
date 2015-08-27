@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   get 'main/about'
   get 'main/leaders'
   get 'main/found'
+  get 'main/not_found'
+  get 'main/edit'
+  get 'main/cancel_edit'
+  get 'main/mark_not_found'
   match "main/update_genre" => "main#update_genre", via: [:post], defaults: { format: 'json' }
  # devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
  # as :user do
