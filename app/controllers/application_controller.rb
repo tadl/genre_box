@@ -7,10 +7,17 @@ class ApplicationController < ActionController::Base
 
   private
 
+   def authenticate_user!
+      if !current_user
+        redirect_to root_url, :alert => 'You need to sign in for access to this page.'
+      end
+  end
+
   def shared_variables
   	@genre_list = ["Educational TV",
   					"Action / Adventure",
   					"Animation",
+            "Anime",
   					"Comedy",
   					"Crime / Mystery",
   					"Documentary",

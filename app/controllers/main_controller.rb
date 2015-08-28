@@ -2,6 +2,7 @@ class MainController < ApplicationController
   require 'uri'
   before_filter :shared_variables
   respond_to :html, :json, :js
+  before_action :authenticate_user!, :except => [:index]
 
   def index
   	@films = Film.where(:found => false, :not_found => false).paginate(:page => params[:page], :per_page => 8)

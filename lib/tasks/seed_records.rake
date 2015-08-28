@@ -1,4 +1,4 @@
-desc "Expire and regenerate cache"
+desc "load records from csv into database"
 task :records_from_txt => :environment do
   require 'csv'
   require 'open-uri'
